@@ -1,10 +1,13 @@
 # STM(Statistic Text Matching)
 
-STM is a tool for quickly text matching based on statistic features, such as tf-idf, bm25, edit-distance and so on. Nowdays a variety of deep learning methods have been applied to text matching, the importance of these statistic features could not be ignored, which could be used to build a baseline model or added as hand feature into deep neural network. Even though many packages support calculating these featues such as sklearn, it is frastrating that there is no framework which conbines these together. Thats why I wrote STM.
 
-## What Can STM do:
-### Calculate text similarity based on statistics
-Supporting following similarities: (Multi-processing is used for spped)
+[![standard-readme compliant](https://img.shields.io/badge/Hello-Language-brightgreen](https://github.com/sxthunder/STM/README-en.md)
+
+STM(Statistic Text Matching)：是一个基于统计特征进行文本匹配的工具。深度学习如火如荼，但是此等基于统计的特征仍然在实际应用中举足轻重。一些常见的统计方法例如：Tf-idf、Bm-25、各种距离以及ctq、cqr分散在不同的包中，每次使用都要读不同包的文档，如果想同时使用几种统计量会写大量重复代码，本框架旨在简化这一部分的工作量。
+
+## STM能做什么:
+### 计算不同的统计相似度特征
+支持一下几种类型的相似度计算（为了提高效率会使用多线程）
 1. Bow
 2. Tf-idf
 3. Bm25
@@ -12,7 +15,7 @@ Supporting following similarities: (Multi-processing is used for spped)
 5. CQR
 6. CTR
 
-Support multi choices and combine in different ways.
+支持同时计算多种相似度，并采用多种方式进行融合。
 
-### Search according the simialrity
-For embedding based simialrity, Faiss is used for speed.
+### 基于相似度进行匹配搜索
+基于embedding的相似度，引入Faiss进行提速。
