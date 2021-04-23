@@ -1,7 +1,6 @@
 # STM(Statistic Text Matching)
 
-
-[![standard-readme compliant](https://img.shields.io/badge/Hello-Language-brightgreen](https://github.com/sxthunder/STM/blob/main/README-en.md)
+[<img src="https://img.shields.io/badge/Hello-Language-brightgreen">](<https://github.com/sxthunder/STM/blob/main/README-en.md>)
 
 STM(Statistic Text Matching)：是一个基于统计特征进行文本匹配的工具。深度学习如火如荼，但是此等基于统计的特征仍然在实际应用中举足轻重。一些常见的统计方法例如：Tf-idf、Bm-25、各种距离以及ctq、cqr分散在不同的包中，每次使用都要读不同包的文档，如果想同时使用几种统计量会写大量重复代码，本框架旨在简化这一部分的工作量。
 
