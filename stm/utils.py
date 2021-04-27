@@ -3,19 +3,15 @@ import os
 from inspect import isfunction
 
 # 验证input_type, input_type表示上传的query和resp是句子级别还是token级别
-def validate_input_type(input_type, query_list, resp_list):
-    def validate_list_type(l):
-        type_dict ={'sen':str, 'token':list}
-
-        for item in l:
-            if not isinstance(item, type_dict[input_type]):
-                raise Exception('input type is {} but the element in input list is not {}!'.format(input_type, input_type))
-
+def validate_input_type(input_type, l):
     if input_type not in ['sen', 'token']:
         raise Exception('input type must be "sen" or "token"')
     
-    validate_list_type(query_list)
-    validate_list_type(resp_list)
+    type_dict ={'sen':str, 'token':list}
+
+    for item in l:
+        if not isinstance(item, type_dict[input_type]):
+            raise Exception('input type is {} but the element in input list is not {}!'.format(input_type, input_type))
 
 # 验证stop_words是否合法, 不合法则直接raise exception
 # 如果使用stopwords则返回True，否则返回False

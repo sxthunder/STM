@@ -1,7 +1,7 @@
 import sys
 import pickle
 from stm import StatisticTextMatching
-from stm.similarity import TfidfSimilarity
+from stm.similarity import TfidfSimilarity, Bm25Similarity
 
 project_path = '/home/liangming/nas/ml_project/medical_dual'
 sys.path.append(project_path)
@@ -20,13 +20,15 @@ resp_list = list(resp_list)
 ans = pickle.load(open('{}/xuekui_final_ans'.format(project_path), 'rb'))
 ans = [x for x in ans if x is not None]
 
-query_list = ['有没有腹胀?']
-resp_list = ['涨?', '腹胀吗?', '您是否存在腹胀？']
-stm = StatisticTextMatching(query_list, resp_list, 3, stop_words=[])
-stm.add_sim_instance([TfidfSimilarity()])
+# query_list = ['有没有腹胀?']
+# resp_list = ['涨?', '腹胀吗?', '您是否存在腹胀？']
 
-stm.run(query_list)
+stm = StatisticTextMatching(resp_list, 3, stop_words=[])
+# stm.add_sim_instance([TfidfSimilarity('Tfidf')])
+stm.add_sim_instance([Bm25Similarity()])
+stm.run(ans)
+
 for l in stm.recall_res[0]:
     print(l)
 
-# pickle.dump(stm.recall_res[0], open('./recall_reply', 'wb'))
+pickle.dump(stm.recall_res[0], open('./recall_reply', 'wb'))

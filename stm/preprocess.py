@@ -2,7 +2,7 @@
 import re
 from stm.utils import load_default_stop_words, update_re_token
 
-def remove_stop_words(input_type, query_list, resp_list, stop_words):
+def remove_stop_words(input_type, l, stop_words):
     def re_subn(pattern, l):
         nl = []
         for s in l:
@@ -22,12 +22,10 @@ def remove_stop_words(input_type, query_list, resp_list, stop_words):
         stop_words = update_re_token(stop_words)
         
         stop_words_re = '|'.join(stop_words)
-        new_query_list = re_subn(stop_words_re, query_list)
-        new_resp_list = re_subn(stop_words_re, resp_list)
+        nl = re_subn(stop_words_re, l)
 
     # input_type为token时，直接判断是否在stop_words中，然后替换
     else:
-        new_query_list = token_subn(stop_words, query_list)
-        new_resp_list = token_subn(stop_words, resp_list)
-        
-    return new_query_list, new_resp_list
+        nl = token_subn(stop_words, l)
+
+    return nl 
