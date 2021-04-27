@@ -18,3 +18,6 @@ STM(Statistic Text Matching)：是一个基于统计特征进行文本匹配的�
 
 ### 基于相似度进行匹配搜索
 基于embedding的相似度，引入Faiss进行提速。
+
+## 实例
+请看main.py(后续文档补充)
