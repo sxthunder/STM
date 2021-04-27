@@ -31,12 +31,3 @@ def remove_stop_words(input_type, query_list, resp_list, stop_words):
         new_resp_list = token_subn(stop_words, resp_list)
         
     return new_query_list, new_resp_list
-
-
-
-    
-
-
-
-
-

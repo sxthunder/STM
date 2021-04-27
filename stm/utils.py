@@ -49,13 +49,18 @@ def update_re_token(stop_words):
 # 验证tokenizer是否合法,如果合法则返回tokenizer方法，否则raise exception
 # 要么为str:['jieba', 'char']
 # 要么为自定义的一个方法：输入一个str，返回分词后的token list
-def validate_tokenizer(tokenizer, dict_path):
+def validate_tokenizer(tokenizer, dict_path, input_type):
+    # 如果自己已经分好词了，则返回一个啥也不做的fun；和其他的tokenizer输入不同意（这里输入分好词的list），输出统一
+    if input_type == 'token':
+        return lambda x:x
+
     new_t = None
     if tokenizer not in ['jieba', 'char'] and isfunction(tokenizer):
         raise Exception('tokenizer either be in ["jieba", "char"] or a function')
     
     if tokenizer == 'jieba':
-        jieba.load_userdict(open(dict_path))
+        if dict_path is not None:
+            jieba.load_userdict(open(dict_path))
         new_t = jieba.lcut()
     
     elif tokenizer == 'char':
